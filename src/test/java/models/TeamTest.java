@@ -57,11 +57,11 @@ public class TeamTest {
 
     }
 
-//    @Test
-//    public void testOtherTeam_correctlyReturned_true() {
-//        Team otherTeam = new Team("Green Monkeys", "neat", "Gertrude");
-//        assertTrue(Team.getAll().contains(otherTeam));
-//    }
+    @Test
+    public void testOtherTeam_correctlyReturned_true() {
+        Team otherTeam = new Team("Green Monkeys", "neat", "Gertrude");
+        assertTrue(Team.getAll().contains(otherTeam));
+    }
 
     public Team setupNewTeam() {
         return new Team("Silver Snakes", "cool", "Bertie");
