@@ -49,14 +49,14 @@ public class TeamTest {
         Team testTeam = setupNewTeam();
         assertEquals(true, testTeam instanceof Team);
     }
-//
-//    @Test
-//    public void testTeam_correctlyReturned_true() {
-//        Team testTeam = setupNewTeam();
-//        assertTrue(Team.getAll().contains(testTeam));
-//
-//    }
-//
+
+    @Test
+    public void testTeam_correctlyReturned_true() {
+        Team testTeam = setupNewTeam();
+        assertTrue(Team.getAll().contains(testTeam));
+
+    }
+
 //    @Test
 //    public void testOtherTeam_correctlyReturned_true() {
 //        Team otherTeam = new Team("Green Monkeys", "neat", "Gertrude");
