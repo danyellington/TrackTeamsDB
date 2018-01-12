@@ -29,7 +29,7 @@ public class TeamTest {
     @Test
     public void TeamName_getName_getTeamName() throws Exception {
         Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-        assertEquals("teamName", testTeam.getTeamName());
+        assertEquals("Silver Snakes", testTeam.getTeamName());
     }
 //
 //    @Test
