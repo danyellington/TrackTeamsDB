@@ -26,11 +26,11 @@ public class TeamTest {
 //        assertEquals(true, testTeam instanceof Team);
 //    }
 //
-//    @Test
-//    public void TeamName_getName_getTeamName() throws Exception {
-//        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-//        assertEquals("Silver Snakes", testTeam.getTeamName());
-//    }
+    @Test
+    public void TeamName_getName_getTeamName() throws Exception {
+        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
+        assertEquals("teamName", testTeam.getTeamName());
+    }
 //
 //    @Test
 //    public void TeamDescription_getDescription_getTeamDescription() throws Exception {
