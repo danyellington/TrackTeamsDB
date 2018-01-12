@@ -32,11 +32,11 @@ public class TeamTest {
         assertEquals("Silver Snakes", testTeam.getTeamName());
     }
 //
-//    @Test
-//    public void TeamDescription_getDescription_getTeamDescription() throws Exception {
-//        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-//        assertEquals("cool", testTeam.getDescription());
-//    }
+    @Test
+    public void TeamDescription_getDescription_getTeamDescription() throws Exception {
+        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
+        assertEquals("cool", .getDescription());
+    }
 //
 //    @Test
 //    public void TeamMemberName_getMemberName_getTeamMemberName() throws Exception {
