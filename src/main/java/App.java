@@ -17,7 +17,7 @@ public class App {
 //        shows home page
         get("/", (request, response)->{
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "home.hbs");
         },  new HandlebarsTemplateEngine());
 
 //        show new form
