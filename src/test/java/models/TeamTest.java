@@ -41,7 +41,7 @@ public class TeamTest {
     @Test
     public void TeamMemberName_getMemberName_getTeamMemberName() throws Exception {
         Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-        assertEquals("Tim", testTeam.getMemberName());
+        assertEquals("Bertie", testTeam.getMemberName());
     }
 
     @Test
