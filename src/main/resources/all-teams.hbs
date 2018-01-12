@@ -1,0 +1,22 @@
+{{#partial "content"}}
+
+{{#if teams}}
+{{#each teams}}
+<!--<p>Word:</p>-->
+<p>  <a href="/teams/{{id}}">{{ teamName }}</a></p>
+<!--<h5>Type:</h5>-->
+<!--<p> {{ type }}</p>-->
+<!--<h5>Definition:</h5>-->
+<!--<p> {{ definition }}</p>-->
+<!--<p>Synonyms:</p>-->
+<!--<p> {{ synonym }}</p>-->
+{{/each}}
+{{else}}
+<p>Nothing to Show</p>
+{{/if}}
+
+
+
+{{/partial}}
+
+{{> layout.hbs}}
