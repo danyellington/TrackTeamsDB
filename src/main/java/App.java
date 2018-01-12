@@ -62,16 +62,21 @@ public class App {
             return new ModelAndView(model, "edit.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+
         //post: process a form to update a post.
 
         post("/teams/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String newMemberName = req.queryParams("memberName");
+            String newTeamName = req.queryParams("teamName");
             int idOfTeamToEdit = Integer.parseInt(req.params("id"));
             Team editTeam = Team.findById(idOfTeamToEdit);
-            editTeam.update(newMemberName); //don’t forget me
+            editTeam.update(newMemberName, newTeamName);
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
+
+
 
     }
 }

@@ -34,7 +34,7 @@ public class Team {
 
     public static Team findById(int id) { return submit.get(id-1); }
 
-    public void update(String memberName) { this.memberName = memberName; }
+    public void update(String memberName, String teamName) { this.memberName = memberName; this.teamName = teamName; }
 
     public boolean getPublished() { return this.published; }
 
