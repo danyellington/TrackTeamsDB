@@ -20,11 +20,11 @@ public class TeamTest {
     }
 
 //
-//    @Test
-//    public void createTeam_team_getTeam() throws Exception {
-//        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-//        assertEquals(true, testTeam instanceof Team);
-//    }
+    @Test
+    public void createTeam_team_getTeam() throws Exception {
+        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
+        assertEquals(true, testTeam instanceof Team);
+    }
 //
     @Test
     public void TeamName_getName_getTeamName() throws Exception {
