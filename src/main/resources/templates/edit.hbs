@@ -3,8 +3,8 @@
 {{#if editTeam}}
 <h1>Add a team member</h1>
 <form action="/teams/{{editTeam.id}}/update" method="post">
-    <label for="members">Edit this post's content</label>
-    <input id="members" name="members" type="text" value="{{editTeam.memberName}}">
+    <label for="memberName">Edit this team's members</label>
+    <input id="memberName" name="memberName" type="text" value="{{editTeam.memberName}}">
     <button type="submit" class="btn btn-default">Add</button>
     {{/if}}
 </form>
