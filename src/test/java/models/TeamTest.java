@@ -31,18 +31,18 @@ public class TeamTest {
         Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
         assertEquals("Silver Snakes", testTeam.getTeamName());
     }
-//
+
     @Test
     public void TeamDescription_getDescription_getTeamDescription() throws Exception {
         Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
         assertEquals("cool", testTeam.getDescription());
     }
-//
-//    @Test
-//    public void TeamMemberName_getMemberName_getTeamMemberName() throws Exception {
-//        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
-//        assertEquals("Bertie", testTeam.getMemberName());
-//    }
+
+    @Test
+    public void TeamMemberName_getMemberName_getTeamMemberName() throws Exception {
+        Team testTeam = new Team("Silver Snakes", "cool", "Bertie");
+        assertEquals("Tim", testTeam.getMemberName());
+    }
 
     @Test
     public void testTeam_instantiatesCorrectly_true() {
