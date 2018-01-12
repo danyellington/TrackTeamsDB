@@ -47,7 +47,7 @@ public class TeamTest {
     @Test
     public void testTeam_instantiatesCorrectly_true() {
         Team testTeam = setupNewTeam();
-        assertEquals(true, testTeam instanceof Team);
+        assertEquals(null, testTeam instanceof Team);
     }
 //
 //    @Test
