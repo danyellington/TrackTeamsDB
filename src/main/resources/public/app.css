@@ -1,0 +1,11 @@
+.jumbotron {
+background-image: url("images/head.jpg");
+
+color: white;
+background-repeat: no-repeat;
+}
+
+body {
+background-color: #ccd4e2;
+}
+
