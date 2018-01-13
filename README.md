@@ -2,7 +2,7 @@
 This is a website designed to allow a user to create and manage teams for a tech event, Version 1: 08/12/17
 #### By: Danyel Murray
 ### Description
-This program is a website a user may use to create and manage teams. The user may generate new teams with names, descriptions, and members. User may then reference the list of teams created to make future changes to the title or members.
+This program is a website a user may use to create and manage teams. The user may generate new teams with names, descriptions, and members. User may then reference the list of teams created to make changes to the title or members.
 
 ### Specifications
 Program can receive user input
