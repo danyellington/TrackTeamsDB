@@ -48,6 +48,13 @@ public class Sql2oMemberDaoTest {
         assertEquals("Web Designer", memberDao.findById(2).getStats());
     }
 
+    @Test
+    public void deleteById() throws Exception {
+        Member testMember = setupNewMember();
+        memberDao.add(testMember);
+        memberDao.deleteById(testMember.getTeamId());
+        assertEquals(0, memberDao.getAll().size());
+    }
 
 
 }
