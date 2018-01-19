@@ -53,7 +53,7 @@ public class Sql2oTeamDao implements TeamDao{
         String sql = "UPDATE Teams SET teamName = :teamName WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("name", newTeamName)
+                    .addParameter("teamName", newTeamName)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
