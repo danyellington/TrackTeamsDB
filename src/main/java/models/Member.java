@@ -55,6 +55,8 @@ public class Member {
 
         Member member = (Member) o;
 
+        if (id != member.id) return false;
+        if (teamId != member.teamId) return false;
         if (memberName != null ? !memberName.equals(member.memberName) : member.memberName != null) return false;
         return stats != null ? stats.equals(member.stats) : member.stats == null;
     }
@@ -63,6 +65,8 @@ public class Member {
     public int hashCode() {
         int result = memberName != null ? memberName.hashCode() : 0;
         result = 31 * result + (stats != null ? stats.hashCode() : 0);
+        result = 31 * result + id;
+        result = 31 * result + teamId;
         return result;
     }
 }

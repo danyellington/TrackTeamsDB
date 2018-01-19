@@ -84,12 +84,12 @@ public class Sql2oTeamDao implements TeamDao{
         }
     }
 
-//    @Override
-//    public List<Member> getAllMembersByTeam(int teamId) {
-//        try(Connection con = sql2o.open()){
-//            return con.createQuery("SELECT * FROM tasks WHERE teamId = :teamId")
-//                    .addParameter("teamId", teamId)
-//                    .executeAndFetch(Member.class);
-//        }
-//    }
+    @Override
+    public List<Member> getAllMembersByTeam(int teamId) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM tasks WHERE teamId = :teamId")
+                    .addParameter("teamId", teamId)
+                    .executeAndFetch(Member.class);
+        }
+    }
 }

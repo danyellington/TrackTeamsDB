@@ -20,20 +20,20 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public void add(Member member) {
 
-        String sql = "INSERT INTO members (memberName, stats, id) VALUES (:memberName, :stats, :id)";
-        try(Connection con = sql2o.open()){
-            int id = (int) con.createQuery(sql)
+        String sql = "INSERT INTO members (memberName, stats, teamId) VALUES (:memberName, :stats, :teamId)"; //raw sql
+        try(Connection con = sql2o.open()){ //try to open a connection
+            int id = (int) con.createQuery(sql) //make a new variable
                     .addParameter("memberName", member.getMemberName())
                     .addParameter("stats", member.getStats())
-                    .addParameter("id", member.getId())
+                    .addParameter("teamId", member.getId())
                     .addColumnMapping("MEMBERNAME", "memberName")
                     .addColumnMapping("STATS", "stats")
-                    .addColumnMapping("ID", "id")
-                    .executeUpdate()
-                    .getKey();
-            member.setId(id);
+                    .addColumnMapping("TEAMID", "teamId")
+                    .executeUpdate() //run it all
+                    .getKey(); //int id is now the row number (row “key”) of db
+            member.setId(id); //update object to set id now from database
         } catch (Sql2oException ex) {
-            System.out.println(ex);
+            System.out.println(ex); //oops we have an error!
         }
     }
 
