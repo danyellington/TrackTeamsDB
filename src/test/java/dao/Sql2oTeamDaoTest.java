@@ -68,12 +68,45 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void updateTeam() throws Exception {
-        String initialDescription = "Yard work";
-        Team team = new Team ("tr", "fda", 2);
+        String initialDescription = "Awesome";
+        Team team = new Team ("Green Monkeys", "Awesome", 2);
         teamDao.add(team);
 
-        teamDao.update(team.getId(),"Cleaning", "fjdksla");
+        teamDao.update(team.getId(),"Red Jaguars", "The Best");
         Team updatedCategory = teamDao.findById(team.getId());
         assertNotEquals(initialDescription, updatedCategory.getTeamName());
     }
+
+//    @Test
+//    public void getAllMembersByTeam() throws Exception {
+//        Team team = setupNewTeam();
+//        teamDao.add(team);
+//        int teamId = team.getId();
+//        Member newMember = new Member("Karen", "ok", teamId);
+//        Member secondMember = new Member("Bill", "meh", teamId);
+//        Member thirdMember = new Member("Steve", "jerk", teamId);
+//        memberDao.add(newMember);
+//        memberDao.add(secondMember);
+//
+//
+//        assertTrue(teamDao.getAllMembersByTeam(teamId).size() == 2);
+//        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(newMember));
+//        assertTrue(teamDao.getAllMembersByTeam(teamId).contains(secondMember));
+//        assertFalse(teamDao.getAllMembersByTeam(teamId).contains(thirdMember));
+//    }
+
+    @Test
+    public void clearAll() throws Exception {
+        Team team = setupNewTeam();
+        Team otherTeam = new Team("Red Jaguars", "Neat", 4);
+        teamDao.add(team);
+        teamDao.add(otherTeam);
+        int daoSize = teamDao.getAll().size();
+        teamDao.clearAllTeams();
+        assertTrue(daoSize > 0 && daoSize > teamDao.getAll().size());
+    }
+
+
+
+
 }
