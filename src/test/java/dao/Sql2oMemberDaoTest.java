@@ -68,7 +68,7 @@ public class Sql2oMemberDaoTest {
     @Test
     public void clearAllMembers() throws Exception {
         Member testMember = setupNewMember();
-        Member testMember2 = new Member("Delores", "Jr Android Developer", );
+        Member testMember2 = new Member("Delores", "Jr Android Developer", 4);
         memberDao.add(testMember);
         memberDao.add(testMember2);
         memberDao.clearAllMembers();
