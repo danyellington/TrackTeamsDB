@@ -86,4 +86,12 @@ public class Sql2oMemberDaoTest {
         Member updatedMember = memberDao.findById(member.getId());
         assertNotEquals(initialStats, updatedMember.getStats());
     }
+
+    @Test
+    public void returnMemberId() throws Exception {
+        Member member = setupNewMember();
+        int originalCatId = member.getTeamId();
+        memberDao.add(member);
+        assertEquals(originalCatId, memberDao.findById(member.getId()).getTeamId());
+    }
 }
