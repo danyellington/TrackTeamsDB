@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS members (
   memberName VARCHAR,
   stats VARCHAR,
   teamId INTEGER
+
 );
 
 CREATE TABLE IF NOT EXISTS teams (

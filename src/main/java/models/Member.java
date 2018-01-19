@@ -8,6 +8,7 @@ public class Member {
         private int teamId;
 
 
+
     public Member (String memberName, String stats, int teamId) {
         this.memberName = memberName;
         this.stats = stats;
@@ -47,6 +48,8 @@ public class Member {
     public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
