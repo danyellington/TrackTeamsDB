@@ -52,7 +52,7 @@ public class Sql2oMemberDaoTest {
     public void deleteById() throws Exception {
         Member testMember = setupNewMember();
         memberDao.add(testMember);
-        memberDao.deleteById(testMember.getTeamId());
+        memberDao.deleteById(testMember.getId());
         assertEquals(0, memberDao.getAll().size());
     }
 
