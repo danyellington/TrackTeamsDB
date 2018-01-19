@@ -37,7 +37,7 @@ public class Sql2oTeamDaoTest {
     }
 
     public Team setupNewTeam() {
-        return new Team ("Purple Parrots", "So Great", 1);
+        return new Team("Purple Parrots", "So Great", 1);
     }
 
     @Test
@@ -48,4 +48,12 @@ public class Sql2oTeamDaoTest {
         assertNotEquals(originalTeamId, team.getId());
     }
 
+    @Test
+    public void getAll() throws Exception {
+        Team testTeam = setupNewTeam();
+        Team testTeam2 = setupNewTeam();
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        assertEquals(2, teamDao.getAll().size());
+    }
 }
