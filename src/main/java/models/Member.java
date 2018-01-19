@@ -2,23 +2,25 @@ package models;
 
 
 public class Member {
-        private String name;
+        private String memberName;
         private String stats;
         private int id;
+        private int teamId;
 
 
-    public Member (String name, String stats) {
-        this.name = name;
+    public Member (String memberName, String stats, int teamId) {
+        this.memberName = memberName;
         this.stats = stats;
+        this.teamId = teamId;
     }
 
 
-    public String getName() {
-        return name;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String memberName) {
+        this.memberName = memberName;
     }
 
     public String getStats() {
@@ -38,6 +40,14 @@ public class Member {
         this.id = id;
     }
 
+    public void getTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,13 +55,13 @@ public class Member {
 
         Member member = (Member) o;
 
-        if (name != null ? !name.equals(member.name) : member.name != null) return false;
+        if (memberName != null ? !memberName.equals(member.memberName) : member.memberName != null) return false;
         return stats != null ? stats.equals(member.stats) : member.stats == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = memberName != null ? memberName.hashCode() : 0;
         result = 31 * result + (stats != null ? stats.hashCode() : 0);
         return result;
     }
