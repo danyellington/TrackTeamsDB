@@ -77,13 +77,13 @@ public class Sql2oMemberDaoTest {
         assertEquals(0, memberDao.getAll().size());
     }
 
-//    @Test
-//    public void update() throws Exception {
-//        String initialStats = "Software Engineer";
-//        Member member = setupNewMember();
-//        memberDao.add(member);
-//        memberDao.update(member.getId(), "ds", "gr", 3);
-//        Member updatedMember = memberDao.findById(member.getId());
-//        assertNotEquals(initialStats, updatedMember.getStats());
-//    }
+    @Test
+    public void update() throws Exception {
+        String initialStats = "Software Engineer";
+        Member member = setupNewMember();
+        memberDao.add(member);
+        memberDao.update(member.getId(), "ds", "gr", 3);
+        Member updatedMember = memberDao.findById(member.getId());
+        assertNotEquals(initialStats, updatedMember.getStats());
+    }
 }
