@@ -16,7 +16,7 @@ public class Sql2oMemberDaoTest {
     private Sql2oMemberDao memberDao;
     private Connection conn;
 
-    public Member setupNewMember() { return new Member("Edith", "Software Engineer", 4); }
+    public Member setupNewMember() { return new Member("Edith", "Software Engineer", 1); }
 
     @Before
     public void setUp() throws Exception {
@@ -37,6 +37,15 @@ public class Sql2oMemberDaoTest {
         int originalMemberId = testMember.getId();
         memberDao.add(testMember);
         assertNotEquals(originalMemberId, testMember.getId());
+    }
+
+    @Test
+    public void findById() throws Exception {
+        Member testMember = setupNewMember();
+        Member testMember2 = new Member("Carl", "Web Designer", 2);
+        memberDao.add(testMember);
+        memberDao.add(testMember2);
+        assertEquals("Carl", memberDao.findById(2).getStats());
     }
 
 
