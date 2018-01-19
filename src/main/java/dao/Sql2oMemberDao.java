@@ -20,15 +20,15 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public void add(Member member) {
 
-        String sql = "INSERT INTO members (memberName, description, teamId) VALUES (:memberName, :stats, :teamId)"; //raw sql
+        String sql = "INSERT INTO members (memberName, stats, id) VALUES (:memberName, :stats, :id)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .addParameter("memberName", member.getMemberName())
                     .addParameter("stats", member.getStats())
-                    .addParameter("teamId", member.getTeamId())
+                    .addParameter("id", member.getId())
                     .addColumnMapping("MEMBERNAME", "memberName")
                     .addColumnMapping("STATS", "stats")
-                    .addColumnMapping("TEAMID", "teamId")
+                    .addColumnMapping("ID", "id")
                     .executeUpdate()
                     .getKey();
             member.setId(id);
@@ -83,7 +83,7 @@ public class Sql2oMemberDao implements MemberDao {
     }
 
     @Override
-    public void clearAllTasks() {
+    public void clearAllMembers() {
         String sql = "DELETE from members";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).executeUpdate();
