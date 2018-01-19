@@ -1,5 +1,12 @@
 {{#partial "content"}}
-
+{{#if members }}
+{{#each members }}
+<p>Team Members: {{ memberName }}</p>
+<p>{{ stats }} <a href="/teams/{{teamId}}/members/{{id}}">read more...</a></p>
+{{/each}}
+{{else}}
+<p>No Team Members</p>
+{{/if}}
 
 {{/partial}}
 

@@ -1,0 +1,20 @@
+{{#partial "content"}}
+
+
+<p>Name: {{ member.memberName }}</p>
+<p>Stats:</p>
+
+<p>{{ member.stats }}</p>
+
+
+{{event.description}}
+
+
+<p>
+    <a href="/tasks/update">Edit this task</a><br>
+    <a href="/categories/{{task.categoryId}}/tasks/{{task.id}}/delete">DELETE this task (no undo)</a>
+</p>
+
+{{/partial}}
+
+{{> layout.hbs}}

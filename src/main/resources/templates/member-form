@@ -1,0 +1,53 @@
+{{#partial "content"}}
+
+{{#if editMember}}
+<form action="/members/update" method="post">
+    <h1>Edit this Team Member</h1>
+    <select id="memberToEditId" name="memberToEditId">
+        {{#each members }}
+        <option value="{{id}}">{{stats}}</option>
+        {{/each}}
+    </select>
+    <br>
+    <label for="memberName">Edit this team member's name</label>
+    <input id="memberName" name="memberName" type="text" placeholder="Enter a new name">
+    <br>
+    <label for="stats">Edit this team member's stats</label>
+    <input id="stats" name="stats" type="text" placeholder="Enter a new stats">
+    <br>
+    <label for="teamId">Update this member's team:</label>
+    <select id="teamId" name="teamId">
+        {{#each categories}}
+        <option value="{{id}}">{{teamName}}</option>
+        {{/each}}
+    </select>
+    <!--<p>Don't see the right category?<a href="/categories/new">Add a new one first.</a></p>-->
+
+    {{else}}
+    <h2>Add a new Team Member</h2>
+
+    <form action="/members/new" method="post">
+        {{#if teams}}
+        <label for="memberName">Team member's name</label>
+        <input id="memberName" name="memberName" type="text" placeholder="Enter name">
+        <label for="stats">Team member stats</label>
+        <input id="stats" name="stats" type="text" placeholder="Enter stats">
+        <label for="teamId">Team:</label>
+
+        <select id="teamId" name="teamId">
+
+            {{#each teams}}
+            <option value="{{id}}">{{teamName}}</option> <!--what is going on here? -->
+            {{/each}}
+        </select>
+        <!--<p>Don't see the right category?<a href="/categories/new">Add a new one first.</a></p>-->
+        {{else}}
+        <!--<h3> You'll need to add a category before you add a task. <a href="/categories/new">Add one here.</a> </h3>-->
+        {{/if}}
+
+        {{/if}}
+        <button type="submit" class="btn btn-default">Go!</button>
+    </form>
+    {{/partial}}
+
+    {{> layout.hbs}}
