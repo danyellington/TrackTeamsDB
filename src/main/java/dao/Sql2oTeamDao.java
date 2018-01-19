@@ -17,6 +17,7 @@ public class Sql2oTeamDao implements TeamDao{
         this.sql2o = sql2o;
     }
 
+
     @Override
     public void add(Team team) {
         String sql = "INSERT INTO teams (teamName) VALUES (:teamName)";
@@ -49,11 +50,11 @@ public class Sql2oTeamDao implements TeamDao{
     }
 
     @Override
-    public void update(int id, String newTeamName, String newDescription){
-        String sql = "UPDATE Teams SET teamName = :teamName WHERE id=:id";
+    public void update(int id, String newTeamName){
+        String sql = "UPDATE teams SET teamName = :teamName WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("teamName", newTeamName)
+                    .addParameter("name", newTeamName)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -75,7 +76,7 @@ public class Sql2oTeamDao implements TeamDao{
 
     @Override
     public void clearAllTeams() {
-        String sql = "DELETE from teams";
+        String sql = "DELETE from teams"; //raw sql
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

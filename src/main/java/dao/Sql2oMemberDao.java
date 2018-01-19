@@ -25,7 +25,7 @@ public class Sql2oMemberDao implements MemberDao {
             int id = (int) con.createQuery(sql) //make a new variable
                     .addParameter("memberName", member.getMemberName())
                     .addParameter("stats", member.getStats())
-                    .addParameter("teamId", member.getId())
+                    .addParameter("teamId", member.getTeamId())
                     .addColumnMapping("MEMBERNAME", "memberName")
                     .addColumnMapping("STATS", "stats")
                     .addColumnMapping("TEAMID", "teamId")
@@ -41,8 +41,8 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public List<Member> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members")
-                    .executeAndFetch(Member.class);
+            return con.createQuery("SELECT * FROM members") //raw sql
+                    .executeAndFetch(Member.class); //fetch a list
         }
     }
 
@@ -57,12 +57,12 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void update(int id, String newMemberName, String newStats, int newTeamId){
-        String sql = "UPDATE members SET (memberName, stats, teamId) = (:memberName, :stats, :teamId) WHERE id=:id";
+        String sql = "UPDATE members SET (memberName, stats, teamId) = (:memberName, :stats, :teamId) WHERE id=:id"; //raw sql
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("memberName", newMemberName)
                     .addParameter("stats", newStats)
-                    .addParameter("TeamId", newTeamId)
+                    .addParameter("teamId", newTeamId)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

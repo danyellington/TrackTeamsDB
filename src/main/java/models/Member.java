@@ -2,14 +2,13 @@ package models;
 
 
 public class Member {
-        private String memberName;
-        private String stats;
-        private int id;
-        private int teamId;
+    private String memberName;
+    private String stats;
+    private int id;
+    private int teamId;
 
 
-
-    public Member (String memberName, String stats, int teamId) {
+    public Member(String memberName, String stats, int teamId) {
         this.memberName = memberName;
         this.stats = stats;
         this.teamId = teamId;
@@ -36,20 +35,17 @@ public class Member {
         return id;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public void getTeamId(int teamId) {
-        this.teamId = teamId;
+    public int getTeamId() {
+        return teamId;
     }
 
     public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -73,4 +69,3 @@ public class Member {
         return result;
     }
 }
-

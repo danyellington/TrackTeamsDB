@@ -12,15 +12,16 @@ public interface TeamDao {
 
     //read
     List<Team> getAll();
-    List<Member> getAllMembersByTeam(int id);
+    List<Member> getAllMembersByTeam(int teamId);
 
     Team findById(int id);
 
     //update
-    void update(int id, String teamName, String description);
+    void update(int id, String teamName);
 
     //delete
     void deleteById(int id);
+
     void clearAllTeams();
 
 }
