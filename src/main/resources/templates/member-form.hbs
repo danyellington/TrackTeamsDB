@@ -21,7 +21,7 @@
         <option value="{{id}}">{{teamName}}</option>
         {{/each}}
     </select>
-    <!--<p>Don't see the right category?<a href="/categories/new">Add a new one first.</a></p>-->
+
 
     {{else}}
     <h2>Add a new Team Member</h2>
@@ -37,12 +37,12 @@
         <select id="teamId" name="teamId">
 
             {{#each teams}}
-            <option value="{{id}}">{{teamName}}</option> <!--what is going on here? -->
+            <option value="{{id}}">{{teamName}}</option>
             {{/each}}
         </select>
-        <!--<p>Don't see the right category?<a href="/categories/new">Add a new one first.</a></p>-->
+
         {{else}}
-        <!--<h3> You'll need to add a category before you add a task. <a href="/categories/new">Add one here.</a> </h3>-->
+
         {{/if}}
 
         {{/if}}

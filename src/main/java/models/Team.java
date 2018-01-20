@@ -10,6 +10,7 @@ public class Team {
 
 
 
+
     public Team(String teamName, String description, int id) {
         this.teamName = teamName;
         this.description = description;
@@ -39,6 +40,8 @@ public class Team {
     public void setId(int id) {
         this.id = id;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
