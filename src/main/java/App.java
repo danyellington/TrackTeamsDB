@@ -24,22 +24,24 @@ public class App {
         Sql2oTeamDao teamDao = new Sql2oTeamDao(sql2o);
 
 ////        shows home page
-        get("/", (request, response)->{
+        get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Team> allCategories = teamDao.getAll();
-//            model.put("Teams", allTeams);
+
+            List<Team> allTeams = teamDao.getAll();
+            model.put("teams", allTeams);
 
             List<Member> members = memberDao.getAll();
             model.put("members", members);
             return new ModelAndView(model, "home.hbs");
-        },  new HandlebarsTemplateEngine());
-//
+        }, new HandlebarsTemplateEngine());
+
+
 ////        show new form
         get("/teams/new", (request, response)->{
             Map<String, Object> model = new HashMap<>();
 
-            List<Team> categories = teamDao.getAll(); //refresh list of links for navbar.
-//            model.put("teams", teams);
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
             return new ModelAndView(model, "team-form.hbs");
         },  new HandlebarsTemplateEngine());
 
@@ -49,11 +51,11 @@ public class App {
             String teamName = request.queryParams("teamName");
             String description = request.queryParams("description");
             String memberName = request.queryParams("memberName");
-            Team newTeam = new Team(teamName, description, 5);
+            Team newTeam = new Team(teamName, description, 0);
             teamDao.add(newTeam);
             List<Team> teams = teamDao.getAll();
             model.put("teams", teams);
-            return new ModelAndView(model, "success.hbs");
+            return new ModelAndView(model, "home.hbs");
         }, new HandlebarsTemplateEngine());
 
 //get: show a form to update a category
@@ -86,21 +88,21 @@ public class App {
         //  /categories/:category_id/tasks/:task_id
         get("/teams/:catId", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfCategoryToFind = Integer.parseInt(req.params("catId")); //new
+            int idOfTeamToFind = Integer.parseInt(req.params("catId"));
 
-            List<Team> teams = teamDao.getAll(); //refresh list of links for navbar.
+            List<Team> teams = teamDao.getAll();
             model.put("teams", teams);
-//
-//            Team foundTeam = teamDao.findById(idOfTeamToFind);
-//            model.put("team", foundTeam);
-//            List<Member> allMembersByTeam = teamDao.getAllMembersByTeam(idOfTeamToFind);
-//            model.put("members", allMembersByTeam);
+
+            Team foundTeam = teamDao.findById(idOfTeamToFind);
+            model.put("team", foundTeam);
+            List<Member> allMembersByTeam = teamDao.getAllMembersByTeam(idOfTeamToFind);
+            model.put("members", allMembersByTeam);
 
             return new ModelAndView(model, "team-detail.hbs"); //new
         }, new HandlebarsTemplateEngine());
 
 
-            //get: show all tasks in all categories and show all categories
+            //get: show all members in all teams and show all teams
             get("/", (req, res) -> {
                 Map<String, Object> model = new HashMap<>();
                 List<Member> members = memberDao.getAll();
@@ -108,7 +110,7 @@ public class App {
                 return new ModelAndView(model, "index.hbs");
             }, new HandlebarsTemplateEngine());
 
-            //get: delete all tasks
+            //get: delete all members
             get("/members/delete", (req, res) -> {
                 Map<String, Object> model = new HashMap<>();
 
@@ -116,7 +118,7 @@ public class App {
                 model.put("teams", allTeams);
 
                 memberDao.clearAllMembers();
-                return new ModelAndView(model, "success.hbs");
+                return new ModelAndView(model, "home.hbs");
             }, new HandlebarsTemplateEngine());
 
 
@@ -144,11 +146,11 @@ public class App {
                 Member newMember = new Member(memberName, stats, teamId);
                 memberDao.add(newMember);
                 model.put("member", newMember);
-                return new ModelAndView(model, "success.hbs");
+                return new ModelAndView(model, "home.hbs");
             }, new HandlebarsTemplateEngine());
 
 
-            //get: show an individual task that is nested in a category
+            //get: show an individual member in team
             get("/teams/:team_id/members/:member_id", (req, res) -> {
                 Map<String, Object> model = new HashMap<>();
                 int idOfMemberToFind = Integer.parseInt(req.params("member_id"));
@@ -185,7 +187,7 @@ public class App {
                 Member editMember = memberDao.findById(memberToEditId);
                 memberDao.update(memberToEditId, newMemberName, newStats, newTeamId);
 
-                return new ModelAndView(model, "success.hbs");
+                return new ModelAndView(model, "home.hbs");
             }, new HandlebarsTemplateEngine());
 
             //get: delete an individual task
@@ -194,7 +196,7 @@ public class App {
                 int idOfMemberToDelete = Integer.parseInt(req.params("member_id"));
                 Member deleteMember = memberDao.findById(idOfMemberToDelete);
                 memberDao.deleteById(idOfMemberToDelete);
-                return new ModelAndView(model, "success.hbs");
+                return new ModelAndView(model, "home.hbs");
             }, new HandlebarsTemplateEngine());
         }
     }

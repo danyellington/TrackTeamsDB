@@ -56,15 +56,23 @@ public class Sql2oTeamDaoTest {
         teamDao.add(testTeam2);
         assertEquals(2, teamDao.getAll().size());
     }
-//
-//    @Test
-//    public void findById() throws Exception {
-//        Team testTeam = setupNewTeam();
-//        Team testLocation2 = new Team("Silver Snakes", "Such Wow", 3);
-//        teamDao.add(testTeam);
-//        teamDao.add(testLocation2);
-//        assertEquals("Silver Snakes", teamDao.findById().getId());
-//    }
+
+    @Test
+    public void findById() throws Exception {
+        Team testTeam = setupNewTeam();
+        Team testTeam2 = new Team("Orange Iguanas", "Cool", 1);
+        Team testTeam3 = new Team("Orange Iguanas", "Cool", 2);
+        Team testTeam4 = new Team("Orange Iguanas", "Cool", 3);
+        Team testTeam5 = new Team("Orange Iguanas", "Cool", 4);
+        teamDao.add(testTeam);
+        teamDao.add(testTeam2);
+        teamDao.add(testTeam3);
+        teamDao.add(testTeam4);
+        teamDao.add(testTeam5);
+        assertEquals(5, teamDao.findById(5).getId());
+    }
+
+
 
     @Test
     public void updateTeam() throws Exception {
