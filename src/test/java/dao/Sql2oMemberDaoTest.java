@@ -42,12 +42,12 @@ public class Sql2oMemberDaoTest {
     }
 
     @Test
-    public void findById() throws Exception {
+    public void findMemberById() throws Exception {
         Member testMember = setupNewMember();
         Member testMember2 = new Member("Carl", "Web Designer", 2);
         memberDao.add(testMember);
         memberDao.add(testMember2);
-        assertEquals("Web Designer", memberDao.findById(2).getStats());
+        assertEquals("Web Designer", memberDao.findMemberById(2).getStats());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class Sql2oMemberDaoTest {
         Member member = setupNewMember();
         memberDao.add(member);
         memberDao.update(member.getId(), "ds", "gr", 3);
-        Member updatedMember = memberDao.findById(member.getId());
+        Member updatedMember = memberDao.findMemberById(member.getId());
         assertNotEquals(initialStats, updatedMember.getStats());
     }
 
@@ -92,6 +92,6 @@ public class Sql2oMemberDaoTest {
         Member member = setupNewMember();
         int originalCatId = member.getTeamId();
         memberDao.add(member);
-        assertEquals(originalCatId, memberDao.findById(member.getId()).getTeamId());
+        assertEquals(originalCatId, memberDao.findMemberById(member.getId()).getTeamId());
     }
 }

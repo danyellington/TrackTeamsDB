@@ -1,53 +1,47 @@
 {{#partial "content"}}
 
-{{#if editMember}}
-<form action="/members/update" method="post">
-    <h1>Edit this Team Member</h1>
-    <select id="memberToEditId" name="memberToEditId">
-        {{#each members }}
-        <option value="{{id}}">{{stats}}</option>
-        {{/each}}
-    </select>
-    <br>
-    <label for="memberName">Edit this team member's name</label>
-    <input id="memberName" name="memberName" type="text" placeholder="Enter a new name">
-    <br>
-    <label for="stats">Edit this team member's stats</label>
-    <input id="stats" name="stats" type="text" placeholder="Enter a new stats">
-    <br>
-    <label for="teamId">Update this member's team:</label>
-    <select id="teamId" name="teamId">
-        {{#each categories}}
-        <option value="{{id}}">{{teamName}}</option>
-        {{/each}}
-    </select>
+    {{#if editMember}}
+        <form action="/members/update" method="post">
+            <h1>Edit Member</h1>
+            <select id="memberToEditId" name="memberToEditId">
+                {{#each members}}
+                    <option value="{{id}}">{{memberName}}</option>
+                {{/each}}
+            </select>
+            <br>
+            <label for="stats">Edit member stats</label>
+            <input id="stats" name="stats" type="text" placeholder="stats">
+            <br>
+            <label for="teamId">Team:</label>
+            <select id="teamId" name="teamId">
+                {{#each teams}}
+                    <option value="{{id}}">{{teamName}}</option>
+                {{/each}}
+            </select>
 
 
     {{else}}
-    <h2>Add a new Team Member</h2>
+            <h2>Add a new member!</h2>
 
-    <form action="/members/new" method="post">
-        {{#if teams}}
-        <label for="memberName">Team member's name</label>
-        <input id="memberName" name="memberName" type="text" placeholder="Enter name">
-        <label for="stats">Team member stats</label>
-        <input id="stats" name="stats" type="text" placeholder="Enter stats">
-        <label for="teamId">Team:</label>
+        <form action="/members/new" method="post">
+            <label for="memberName">Member Name</label>
+            <input id="memberName" name="memberName" type="text">
 
-        <select id="teamId" name="teamId">
-
-            {{#each teams}}
-            <option value="{{id}}">{{teamName}}</option>
-            {{/each}}
-        </select>
-
-        {{else}}
-
-        {{/if}}
-
-        {{/if}}
-        <button type="submit" class="btn btn-default">Go!</button>
+            <label for="stats">Member Stats</label>
+            <input id="stats" name="stats" type="text">
+            <br>
+            <label for="teamId">Add this member to: </label>
+            <select id="teamId" name="teamId">
+                {{#each teams}}
+                    <option value="{{id}}">{{teamName}}</option>
+                {{/each}}
+            </select>
+    {{/if}}
+        <br>
+        <button type="submit" class="btn btn-default">Add</button>
     </form>
-    {{/partial}}
 
-    {{> layout.hbs}}
+
+{{/partial}}
+
+{{> layout.hbs}}

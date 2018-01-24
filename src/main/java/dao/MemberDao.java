@@ -11,7 +11,7 @@ public interface MemberDao {
     //read
     List<Member> getAll();
 
-    Member findById(int id);
+    Member findMemberById(int id);
     //update
     void update(int id, String memberName, String stats, int teamId);
     //delete

@@ -19,48 +19,43 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(Member member) {
-
-        String sql = "INSERT INTO members (memberName, stats, teamId) VALUES (:memberName, :stats, :teamId)"; //raw sql
-        try(Connection con = sql2o.open()){ //try to open a connection
-            int id = (int) con.createQuery(sql) //make a new variable
-                    .addParameter("memberName", member.getMemberName())
-                    .addParameter("stats", member.getStats())
-                    .addParameter("teamId", member.getTeamId())
-                    .addColumnMapping("MEMBERNAME", "memberName")
-                    .addColumnMapping("STATS", "stats")
-                    .addColumnMapping("TEAMID", "teamId")
-                    .executeUpdate() //run it all
-                    .getKey(); //int id is now the row number (row “key”) of db
-            member.setId(id); //update object to set id now from database
+        String sql = "INSERT INTO members(memberName, stats, teamId) VALUES (:memberName, :stats, :teamId)";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(sql)
+                    .bind(member)
+                    .executeUpdate()
+                    .getKey();
+            member.setId(id);
         } catch (Sql2oException ex) {
-            System.out.println(ex); //oops we have an error!
+            System.out.println(ex);
         }
     }
 
 
     @Override
     public List<Member> getAll() {
+        String sql = "SELECT * FROM members";
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members") //raw sql
+            return con.createQuery(sql)
                     .executeAndFetch(Member.class); //fetch a list
         }
     }
 
     @Override
-    public Member findById(int id) {
-        try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members WHERE id = :id")
-                    .addParameter("id", id) //key/value pair, key must match above
-                    .executeAndFetchFirst(Member.class); //fetch an individual item
+    public Member findMemberById(int id) {
+        String sql = "SELECT * FROM members WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Member.class);
         }
     }
 
     @Override
     public void update(int id, String newMemberName, String newStats, int newTeamId){
-        String sql = "UPDATE members SET (memberName, stats, teamId) = (:memberName, :stats, :teamId) WHERE id=:id"; //raw sql
+        String sql = "UPDATE members SET stats = :stats, teamId = :teamId WHERE id=:id"; //raw sql
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("memberName", newMemberName)
                     .addParameter("stats", newStats)
                     .addParameter("teamId", newTeamId)
                     .addParameter("id", id)

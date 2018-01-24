@@ -11,7 +11,7 @@ public class Team {
 
 
 
-    public Team(String teamName, String description, int id) {
+    public Team(String teamName, String description) {
         this.teamName = teamName;
         this.description = description;
 
@@ -42,7 +42,6 @@ public class Team {
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,14 +50,14 @@ public class Team {
         Team team = (Team) o;
 
         if (id != team.id) return false;
-        if (teamName != null ? !teamName.equals(team.teamName) : team.teamName != null) return false;
-        return description != null ? description.equals(team.description) : team.description == null;
+        if (!teamName.equals(team.teamName)) return false;
+        return description.equals(team.description);
     }
 
     @Override
     public int hashCode() {
-        int result = teamName != null ? teamName.hashCode() : 0;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
+        int result = teamName.hashCode();
+        result = 31 * result + description.hashCode();
         result = 31 * result + id;
         return result;
     }

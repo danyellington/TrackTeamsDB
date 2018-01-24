@@ -1,13 +1,11 @@
 {{#partial "content"}}
 <h1>Teams</h1>
 {{#if teams}}
+
     {{#each teams}}
-
-
-
         <p>  <a href="/teams/{{id}}">{{ teamName }}</a></p>
-
     {{/each}}
+
     {{else}}
         <p>Nothing to Show</p>
 {{/if}}

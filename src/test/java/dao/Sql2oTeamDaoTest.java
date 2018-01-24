@@ -37,7 +37,7 @@ public class Sql2oTeamDaoTest {
     }
 
     public Team setupNewTeam() {
-        return new Team("Purple Parrots", "So Great", 1);
+        return new Team("Purple Parrots", "So Great");
     }
 
     @Test
@@ -60,10 +60,10 @@ public class Sql2oTeamDaoTest {
     @Test
     public void findById() throws Exception {
         Team testTeam = setupNewTeam();
-        Team testTeam2 = new Team("Orange Iguanas", "Cool", 1);
-        Team testTeam3 = new Team("Orange Iguanas", "Cool", 2);
-        Team testTeam4 = new Team("Orange Iguanas", "Cool", 3);
-        Team testTeam5 = new Team("Orange Iguanas", "Cool", 4);
+        Team testTeam2 = new Team("Orange Iguanas", "Cool");
+        Team testTeam3 = new Team("Orange Iguanas", "Cool");
+        Team testTeam4 = new Team("Orange Iguanas", "Cool");
+        Team testTeam5 = new Team("Orange Iguanas", "Cool");
         teamDao.add(testTeam);
         teamDao.add(testTeam2);
         teamDao.add(testTeam3);
@@ -76,11 +76,11 @@ public class Sql2oTeamDaoTest {
 
     @Test
     public void updateTeam() throws Exception {
-        String initialTeamName = "Yardwork";
-        Team team = new Team (initialTeamName, "yeah", 4);
+        String initialTeamName = ("actual");
+        Team team = new Team (initialTeamName, "yeah");
         teamDao.add(team);
 
-        teamDao.update(team.getId(),"Cleaning");
+        teamDao.update(team.getId(),"Cleaning", "cool");
         Team updatedTeam = teamDao.findById(team.getId());
         assertNotEquals(initialTeamName, updatedTeam.getTeamName());
     }
@@ -106,7 +106,7 @@ public class Sql2oTeamDaoTest {
     @Test
     public void clearAll() throws Exception {
         Team team = setupNewTeam();
-        Team otherTeam = new Team("Red Jaguars", "Neat", 4);
+        Team otherTeam = new Team("Red Jaguars", "Neat");
         teamDao.add(team);
         teamDao.add(otherTeam);
         int daoSize = teamDao.getAll().size();

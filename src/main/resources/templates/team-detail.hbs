@@ -1,21 +1,32 @@
 {{#partial "content"}}
-<p>Members of this Team:    {{teamName.name}} </p>
+
+
+    <h3>Team Name:</h3>
+    <p>{{ team.teamName }}</p>
+    <h3>Team Description:</h3>
+    <p> {{ team.description }}</p>
+
 
 <ul>
     {{#each members}}
     <li>
-        <h5>Member Name: {{ memberName }}</h5>
-        <p>Member Stats:{{ stats }}</p>
+        <p><a href="/teams/{{teamId}}/members/{{id}}">{{ teamName }}</a></p>
+
+
+
+        <a href="/teams/{{teamId}}/members/{{id}}">{{ memberName }}</a><br>
+
+
 
         <br>
-        <a href="/members/update">Edit members</a><br>
-        <a href="/members/delete">DELETE members</a>
-        </p>
+
+
     </li>
     {{/each}}
 </ul>
+<h3><a href="/members/new">Add a new team member</a></h3>
 <a href="/teams/update">Edit this Team</a><br>
-<a href="/teams/delete">DELETE Team</a>
+<a href="/teams/{{team.id}}/delete">DELETE Team</a>
 
 {{/partial}}
 

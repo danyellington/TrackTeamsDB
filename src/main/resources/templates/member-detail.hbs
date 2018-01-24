@@ -1,19 +1,14 @@
 {{#partial "content"}}
 
-
-<p>Name: {{ member.memberName }}</p>
-<p>Stats:</p>
-
-<p>{{ member.stats }}</p>
-
-
-{{event.description}}
+    <p>Name: {{ member.memberName }}</p>
+    <p>Stats: {{ member.stats }}</p>
+<!--<a href="/members/update">Edit team member</a><br>-->
+<a href="/teams/{{member.teamId}}/members/{{member.id}}/delete">DELETE</a>
+    <a href="/teams/{{member.teamId}}/members/{{member.id}}/update">EDIT</a>
 
 
-<p>
-    <a href="/tasks/update">Edit this task</a><br>
-    <a href="/categories/{{task.categoryId}}/tasks/{{task.id}}/delete">DELETE this task (no undo)</a>
-</p>
+
+
 
 {{/partial}}
 
