@@ -10,6 +10,10 @@
             </select>
             <label for="newTeamName">Edit name</label>
             <input id="newTeamName" name="newTeamName" type="text" placeholder="new name">
+            <label for="newDescription">Edit name</label>
+            <input id="newDescription" name="newDescription" type="text" placeholder="new description">
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
 
     {{else}}
             <h1>Add</h1>
@@ -19,10 +23,12 @@
             <input id="teamName" name="teamName" type="text">
             <label for="description">Description</label>
             <input id="description" name="description" type="text">
-
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
     {{/if}}
-        <button type="submit" class="btn btn-default">Go!</button>
-    </form>
+
+
+
 {{/partial}}
 
 {{> layout.hbs}}

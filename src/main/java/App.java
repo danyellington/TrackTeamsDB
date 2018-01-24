@@ -60,11 +60,22 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String teamName = request.queryParams("teamName");
             String description = request.queryParams("description");
-//            String memberName = request.queryParams("memberName");
             Team newTeam = new Team(teamName, description);
             teamDao.add(newTeam);
             List<Team> teams = teamDao.getAll();
             model.put("teams", teams);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //process a form to update a team
+        post("/teams/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToEdit = Integer.parseInt(request.queryParams("editTeamId"));
+            String newTeamName = request.queryParams("newTeamName");
+            String newDescription = request.queryParams("newDescription");
+            List<Team> teams = teamDao.getAll();
+            model.put("teams", teams);
+            teamDao.update(idOfTeamToEdit, newTeamName, newDescription);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
